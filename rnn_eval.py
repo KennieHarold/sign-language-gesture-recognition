@@ -4,7 +4,7 @@ run train_rnn.py and save the weights.
 """
 from rnn_utils import get_network_wide, get_data
 import argparse
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import tflearn
 import numpy as np
 import sys

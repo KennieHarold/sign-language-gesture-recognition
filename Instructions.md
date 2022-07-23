@@ -18,9 +18,9 @@ python retrain.py --bottleneck_dir=bottlenecks --summaries_dir=training_summarie
 python predict_spatial.py retrained_graph.pb train_frames --batch=100
 ```
 
-# Intermediate representation of videos for train frames
+# Intermediate representation of videos for test frames
 ```shell
-python predict_spatial.py retrained_graph.pb test_frames --batch=100
+python predict_spatial.py retrained_graph.pb test_frames --batch=100 --test
 ```
 
 # Train the RNN

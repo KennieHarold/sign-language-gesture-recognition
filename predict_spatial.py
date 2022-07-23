@@ -8,9 +8,10 @@ import numpy as np
 import os
 import pickle
 import sys
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tqdm import tqdm
 
+tf.disable_v2_behavior()
 
 def load_graph(model_file):
     graph = tf.Graph()
@@ -43,9 +44,12 @@ def read_tensor_from_image_file(frames, input_height=299, input_width=299, input
     float_caster = [tf.cast(image_reader, tf.float32) for image_reader in decoded_frames]
     float_caster = tf.stack(float_caster)
     resized = tf.image.resize_bilinear(float_caster, [input_height, input_width])
-    normalized = tf.divide(tf.subtract(resized, [input_mean]), [input_std])
+    
     sess = tf.Session()
-    result = sess.run(normalized)
+    with tf.Session() as sess:
+        normalized = tf.divide(tf.subtract(resized, [input_mean]), [input_std])
+        result = sess.run(normalized)
+        
     return result
 
 
@@ -58,15 +62,16 @@ def load_labels(label_file):
 
 
 def predict(graph, image_tensor, input_layer, output_layer):
-    input_name = "import/" + input_layer
-    output_name = "import/" + output_layer
-    input_operation = graph.get_operation_by_name(input_name)
-    output_operation = graph.get_operation_by_name(output_name)
     with tf.Session(graph=graph) as sess:
+        input_name = "import/" + input_layer
+        output_name = "import/" + output_layer
+        input_operation = graph.get_operation_by_name(input_name)
+        output_operation = graph.get_operation_by_name(output_name)
         results = sess.run(
             output_operation.outputs[0],
             {input_operation.outputs[0]: image_tensor}
         )
+        
     results = np.squeeze(results)
     return results
 

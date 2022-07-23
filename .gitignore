@@ -147,3 +147,8 @@ val
 train_frames
 test_frames
 training_summaries
+retrained_graph.pb
+retrained_labels.txt
+predicted-frames-final_result-train.pkl
+predicted-frames-final_result-test.pkl
+non_pool.model
