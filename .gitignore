@@ -137,3 +137,13 @@ venv.bak/
 /.gitignore
 
 /sign-language-gesture-recognition.sublime-workspace
+
+raw_videos
+train_videos
+test_videos
+train
+test
+val
+train_frames
+test_frames
+training_summaries
