@@ -152,3 +152,4 @@ retrained_labels.txt
 predicted-frames-final_result-train.pkl
 predicted-frames-final_result-test.pkl
 non_pool.model
+result.txt
