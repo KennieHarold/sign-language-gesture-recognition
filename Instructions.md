@@ -30,5 +30,5 @@ python rnn_train.py predicted-frames-final_result-train.pkl non_pool.model
 
 # Test the RNN Model
 ```shell
-python3 rnn_eval.py predicted-frames-final_result-test.pkl non_pool.model
+python rnn_eval.py predicted-frames-final_result-test.pkl non_pool.model
 ```
