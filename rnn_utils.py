@@ -20,11 +20,13 @@ def get_data(input_data_dump, num_frames_per_video, labels, ifTrain):
     # Open and get the features.
     with open(input_data_dump, 'rb') as fin:
         frames = pickle.load(fin)
+        
         for i, frame in enumerate(frames):
-
             features = frame[0]
+            
+            print(len(features))
+            
             actual = frame[1].lower()
-
             # frameCount = frame[2]
 
             # Convert our labels into binary.
@@ -46,6 +48,8 @@ def get_data(input_data_dump, num_frames_per_video, labels, ifTrain):
         print("%s\t\t%d" % (key, labels[key]))
 
     # Numpy.
+    print("Raw X: ", X)
+    
     X = np.array(X)
     y = np.array(y)
 

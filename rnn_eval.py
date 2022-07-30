@@ -26,6 +26,8 @@ def main(filename, frames, batch_size, num_classes, input_length):
 
     num_classes = len(labels)
     size_of_each_frame = X.shape[2]
+    
+    print('Shape: ', X.shape)
 
     # Get our network.
     net = get_network_wide(num_frames_per_video, size_of_each_frame, num_classes)

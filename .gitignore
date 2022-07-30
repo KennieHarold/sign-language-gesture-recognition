@@ -153,3 +153,5 @@ predicted-frames-final_result-train.pkl
 predicted-frames-final_result-test.pkl
 non_pool.model
 result.txt
+test_out_frames
+test_video
